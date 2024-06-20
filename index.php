@@ -1,45 +1,46 @@
 <?php
-  $drugs = [
-    [
-      "img"=>"baimundan tea.JPG", 
-      "name"=>"Baimudan tea", 
-      "price"=>20000, 
-      "desc"=>"Aromatic, Smooth, Floral, Subtle, Delightful."
-    ],
-    [
-      "img"=>"chamomile tea.jpg", 
-      "name"=>"Chamomile tea", 
-      "price"=>10000, 
-      "desc"=>"Calming, Floral, Soothing, Relaxing, Fragrant."
-    ],
-    [
-      "img"=>"dianhong tea.jpg", 
-      "name"=>"Dianhong tea", 
-      "price"=>40000, 
-      "desc"=>"Rich, Malty, Sweet, Robust, Smooth."
-    ],
-    [
-      "img"=>"green tea.jpg", 
-      "name"=>"Green tea", 
-      "price"=>60000, 
-      "desc"=>"Refreshing, Earthy, Light, Antioxidant-rich, Grassy."
-    ],
-    [
-      "img"=>"pappermint tea.jpg", 
-      "name"=>"Pappermint tea", 
-      "price"=>11000, 
-      "desc"=>"Refreshing, Cooling, Aromatic, Digestive, Invigorating."
-    ],
-    [
-      "img"=>"white tea.jpg", 
-      "name"=>"White tea", 
-      "price"=>20000, 
-      "desc"=>"Delicate, Subtle, Floral, Light, Refreshing."
-    ],
-  ];
-  function intToIdr($money) {
-    return 'Rp' . number_format($money, 0, ',', '.');
-  }
+$teas = [
+  [
+    "img" => "baimundan tea.JPG",
+    "name" => "Baimudan tea",
+    "price" => 20000,
+    "desc" => "Aromatic, Smooth, Floral, Subtle."
+  ],
+  [
+    "img" => "chamomile tea.jpg",
+    "name" => "Chamomile tea",
+    "price" => 10000,
+    "desc" => "Calming, Floral, Soothing, Relaxing."
+  ],
+  [
+    "img" => "dianhong tea.jpg",
+    "name" => "Dianhong tea",
+    "price" => 40000,
+    "desc" => "Rich, Malty, Sweet, Robust, Smooth."
+  ],
+  [
+    "img" => "green tea.jpg",
+    "name" => "Green tea",
+    "price" => 60000,
+    "desc" => "Refreshing, Earthy, Light, Antioxidant."
+  ],
+  [
+    "img" => "pappermint tea.jpg",
+    "name" => "Pappermint tea",
+    "price" => 11000,
+    "desc" => "Refreshing, Cooling, Aromatic, Digestive."
+  ],
+  [
+    "img" => "white tea.jpg",
+    "name" => "White tea",
+    "price" => 20000,
+    "desc" => "Delicate, Subtle, Floral, Light, Refreshing."
+  ],
+];
+function intToIdr($money)
+{
+  return 'Rp' . number_format($money, 0, ',', '.');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,87 +48,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Herbal Tea - Home Page</title>
+  <title>Tea - Home Page</title>
   <link rel="icon" href="img/blacktea.png" type="image/x-icon">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      font-family: "Poppins", sans-serif;
-    }
-    body {
-      width: 100%;
-      height: 98vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #eee;
-    }
-    .content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-    .card-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      width: 75%;
-      gap: 20px;
-    }
-    .card {
-      width: 250px;
-      height: 250px;
-      background: white;
-      border: 1px solid #c4c4c4;
-      border-radius: 5px;
-      transition: all .3s ease;
-    }
-    .card:hover {
-      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-      transform: translate(0, -3px);
-    }
-    .card img {
-      width: 250px;
-      height: 150px;
-      border-radius: 5px 5px 0 0;
-    }
-    .card-desc {
-      padding: 0 13px;
-    }
-    .card-desc p:nth-child(1) {
-      font-weight: 700;
-    }
-    .card-desc p:nth-child(2) {
-      padding: 1px 0;
-      font-weight: 400;
-      color: #999;
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-    .card-desc p:nth-child(3) {
-      font-weight: 400;
-      color: #aaa;
-      font-size: 0.7rem;
-    }
-    </style>
+  <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-  <div class="content">
-    <h1>Herbal Tea</h1>
-    <div class="card-container">
-    <?php foreach($drugs as $drug) : ?>
-      <div class="card">
-        <img src="img/<?= $drug["img"]; ?>" alt="">
-        <div class="card-desc">
-          <p><?= $drug["name"]; ?></p>
-          <p><?= intToIdr($drug["price"]); ?>/pack</p>
-          <p><?= $drug["desc"]; ?></p>
-        </div>
+  <main>
+    <nav>
+      <h1 class="brand">Tea.</h1>
+      <h1>Herbal Tea</h1>
+      <div class="profile">
+        <img src="img/profile.jpg" alt="">
+        <p id="profileName"></p>
+        <button id="btn"></button>
       </div>
-    <?php endforeach; ?>
+    </nav>
+    <div class="card-container">
+      <?php foreach ($teas as $tea): ?>
+        <div class="card">
+          <img src="img/<?= $tea["img"]; ?>" alt="">
+          <div class="card-desc">
+            <p>
+              <?= $tea["name"]; ?>
+            </p>
+            <p>
+              <?= intToIdr($tea["price"]); ?>/pack
+            </p>
+            <p>
+              <?= $tea["desc"]; ?>
+            </p>
+            <button>Buy</button>
+          </div>
+        </div>
+      <?php endforeach; ?>
     </div>
-  </div>
+  </main>
+  <?php
+  if (isset($_GET['name'])) {
+    $name = $_GET['name'];
+    echo "<script>
+          document.querySelector('#profileName').innerHTML = '$name'
+          document.querySelector('#btn').innerHTML = 'Logout'
+          </script>";
+  } else {
+    $name = 'Guest';
+    echo "<script>
+          document.querySelector('#profileName').innerHTML = '$name'
+              document.querySelector('#btn').innerHTML = 'Sign Up'
+            </script>";
+  }
+  ?>
+  <script>
+    const regisBtn = document.getElementById("btn")
+    regisBtn.addEventListener("click", () => {
+      if (regisBtn.innerHTML == 'Logout') {
+        setTimeout(() => {
+          alert('Logout Success')
+          window.location.href = 'index.php';
+        }, 500);
+      } else {
+        setTimeout(() => {
+          window.location.href = "signup.php"
+        }, 500);
+      }
+    })
+  </script>
 </body>
+
 </html>
